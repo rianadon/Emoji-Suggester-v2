@@ -1,0 +1,1 @@
+i5_processor i5/OS_partition i5_NVIDIA_GeForce i5/OS_AIX

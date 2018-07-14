@@ -1,0 +1,1 @@
+SPX_CORPORATION_AND SPX_Volatility_Index SPXCF_Short_Term_PowerRatings SPXCF_SPXCF SPX_SPW_PriceWatch_Alert

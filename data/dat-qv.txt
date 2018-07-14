@@ -1,0 +1,1 @@
+QVGA QVGA_display QVGA_resolution QVGA_screen QVGA_###x### QVGA_touchscreen QVGA_LCD QVGA_TFT_LCD QVGA_###x###_pixels QVGA_###x###_pixel QVGA_TFT_display

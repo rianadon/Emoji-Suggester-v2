@@ -1,0 +1,1 @@
+GLR_Investments_KPC GLR_def GLR_pin GLR_dec

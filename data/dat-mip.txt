@@ -1,0 +1,1 @@
+MIPR MIPS_processors MIPJUNIOR MIPS_Technologies_invites MIPI_DSI MIPS_Little_Endian MIPS_TECHNOLOGIES_INC._CONDENSED mips_architecture_MIPS MIPI_SD_SDIO MIPS##_TM mipsel_architecture_MIPS MIP_Peachtree_SalesLogix_Timberline MIPS_TECHNOLOGIES MIPI_Specifications_establish

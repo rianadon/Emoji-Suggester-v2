@@ -1,0 +1,165 @@
+body {
+    margin: 16px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.search-bar {
+    display: flex;
+    /* grid-template-columns: 1fr auto 1fr; */
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    justify-content: center;
+}
+
+.search-stats {
+    display: flex;
+    line-height: 40px;
+    flex: 1 0 0px;
+    overflow: hidden;
+    color: #777;
+    white-space: nowrap;
+}
+
+.stat {
+    margin: 0 0.75em;
+}
+
+.stat-name {
+    margin-right: 0.3em;
+}
+
+.stat-val {
+    font-weight: 600;
+    color: #888;
+}
+
+.search {
+    margin: 0 1em;
+    display: block;
+    width: 40%;
+    max-width: 300px;
+    min-width: 100px;
+    font-size: 1.3em;
+    border: none;
+    background: #f0f0f0;
+    padding: 0.25em 0.9em;
+}
+
+.search-stats-left {
+    justify-content: right;
+}
+
+.search:focus {
+    outline: 1.5px solid #998;
+}
+
+@media screen and (max-width: 910px) {
+    .stat-outer { display: none; }
+}
+@media screen and (max-width: 640px) {
+    .stat { display: none }
+}
+
+#results {
+    margin: 32px auto;
+    width: 266px;
+    min-height: 200px;
+}
+
+#results:empty::before {
+    display: block;
+    margin: 0 auto;
+    padding-top: 40px;
+    content: ' ';
+    background: url('https://twemoji.maxcdn.com/2/72x72/1f631.png') no-repeat center bottom / contain;
+    height: 72px;
+    width: 72px;
+}
+
+#results:empty::after {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    content: 'No emoji found!';
+    font-size: 1.3em;
+    color: #666;
+}
+
+/* #results:empty + footer { */
+/*     display: none; */
+/* } */
+
+@media screen and (min-width: 548px) { #results { width: 532px; }}
+@media screen and (min-width: 814px) { #results { width: 798px; }}
+@media screen and (min-width: 1080px) { #results { width: 1064px; }}
+@media screen and (min-width: 1346px) { #results { width: 1330px; }}
+
+.result {
+    font-size: 14px;
+    line-height: 1;
+    width: 250px;
+    display: inline-grid;
+    grid-template-columns: 24px auto 1fr;
+    column-gap: 12px;
+    row-gap: 2px;
+    overflow: hidden;
+    margin: 0 8px;
+    padding: 4px 0;
+}
+
+.emoji {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /* position: relative; */
+    font-size: 24px;
+    line-height: 1;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    align-self: center;
+    margin-bottom: 2px;
+}
+
+.emoji-name {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    font-size: 1.2em;
+}
+
+.emoji-path {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    color: #707066;
+}
+
+.emoji-path::before {
+    content: "> ";
+    opacity: 0.5;
+    font-size: 0.75em;
+    margin-left: -1px;
+}
+
+.emoji-acc {
+    color: #939388;
+    /* margin-left: 4px; */
+    font-size: 0.9em;
+    margin-top: 1px;
+}
+
+.underscore {
+    opacity: 0.3;
+}
+
+footer {
+    text-align: center;
+    color: #939388;
+}
+
+.bad { opacity: 0.75 }
+.terrible { opacity: 0.5 }
+.good { font-weight: 600 }

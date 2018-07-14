@@ -1,0 +1,1 @@
+1H_4H_ForexSto_Modified 1hour_##mins_##.#secs_M 1hr_##min_##.###sec 1hr_##mins_##.###secs 1hour_##mins_##.#secs
