@@ -46,6 +46,7 @@ function parseNpy(buffer) {
     const threeFiles = await (await fetch('data/threefiles.json')).json()
     const fsForbid = '<>:"/\\|?*'
     let currentSearch = null
+    let lastSearch = null
 
     async function search(term) {
         const ret = {
@@ -72,13 +73,19 @@ function parseNpy(buffer) {
 
         const { vocab, weights } = await (async () => {
             if (cache[filename]) return cache[filename]
-            const vocab = (await (await fetch(`data/dat-${filename}.txt`)).text()).split(' ')
-            const weights = parseNpy(await (await fetch(`data/dat-${filename}.npy`)).arrayBuffer())
-            return cache[filename] = { vocab, weights }
+            try {
+                const vocab = (await (await fetch(`data/dat-${filename}.txt`)).text()).split(' ')
+                const weights = parseNpy(await (await fetch(`data/dat-${filename}.npy`)).arrayBuffer())
+                return cache[filename] = { vocab, weights }
+            } catch(e) {
+                return { vocab: null, weights: null }
+            }
         })()
 
+        if (vocab == null) return ret
+
         ret.vocablen = vocab.length
-        if (currentSearch != term) return ret
+        if (currentSearch != term) throw new Error('term out of date')
 
         let index = vocab.indexOf(term) // Find index by case
         if (index == -1) {
@@ -137,8 +144,16 @@ function parseNpy(buffer) {
     const g30El = document.querySelector('#stat-g30')
     const matchesEl = document.querySelector('#stat-matches')
     inp.addEventListener('input', (ev) => {
+        setTimeout(() => {
+            console.log(lastSearch, inp.value)
+            if (lastSearch != inp.value) results.innerHTML = '<span class="searching"></span>'
+        }, 1000);
         results.classList.toggle('blank', inp.value.length == 0);
-        search(inp.value).then(updateEmoji).catch((err) => console.error(err))
+        const term = inp.value;
+        search(term).then(updateEmoji).then(
+            () => lastSearch = term,
+            (err) => console.error(err)
+        );
     })
     search('hello').then(updateEmoji)
 })()

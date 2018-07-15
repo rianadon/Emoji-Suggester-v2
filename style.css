@@ -58,6 +58,7 @@ h1 {
 
 .search:focus {
     outline: 1.5px solid #998;
+    outline: 1.5px auto #998;
 }
 
 @media screen and (max-width: 910px) {
@@ -73,7 +74,7 @@ h1 {
     min-height: 200px;
 }
 
-#results:empty::before {
+#results:empty::before, .searching::before {
     display: block;
     margin: 0 auto;
     padding-top: 40px;
@@ -83,7 +84,7 @@ h1 {
     width: 72px;
 }
 
-#results:empty::after {
+#results:empty::after, .searching::after {
     display: block;
     text-align: center;
     margin-top: 20px;
@@ -99,6 +100,12 @@ h1 {
     content: 'Type to search emoji';
 }
 
+.searching::before {
+    background-image: url('https://twemoji.maxcdn.com/2/72x72/1f50e.png');
+}
+.searching::after {
+    content: 'Searching for emoji';
+}
 
 @media screen and (min-width: 548px) { #results { width: 532px; }}
 @media screen and (min-width: 814px) { #results { width: 798px; }}
