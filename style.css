@@ -92,9 +92,13 @@ h1 {
     color: #666;
 }
 
-/* #results:empty + footer { */
-/*     display: none; */
-/* } */
+#results.blank:empty::before {
+    background-image: url('https://twemoji.maxcdn.com/2/72x72/1f52d.png');
+}
+#results.blank:empty::after {
+    content: 'Type to search emoji';
+}
+
 
 @media screen and (min-width: 548px) { #results { width: 532px; }}
 @media screen and (min-width: 814px) { #results { width: 798px; }}

@@ -124,7 +124,6 @@ function parseNpy(buffer) {
         results.innerHTML = emoji.map((res) => {
             return emojiElem(res.emote, nameMap[res.emote], res.word, res.dotprod)
         }).join('')
-        console.log(g30)
         vocablenEl.innerHTML = vocablen
         meddotEl.innerHTML = meddot.toFixed(2)
         g30El.innerHTML = g30
@@ -138,6 +137,7 @@ function parseNpy(buffer) {
     const g30El = document.querySelector('#stat-g30')
     const matchesEl = document.querySelector('#stat-matches')
     inp.addEventListener('input', (ev) => {
+        results.classList.toggle('blank', inp.value.length == 0);
         search(inp.value).then(updateEmoji).catch((err) => console.error(err))
     })
     search('hello').then(updateEmoji)
