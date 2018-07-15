@@ -163,3 +163,11 @@ footer {
 .bad { opacity: 0.75 }
 .terrible { opacity: 0.5 }
 .good { font-weight: 600 }
+
+a {
+    color: #999933;
+}
+
+a:visited {
+    color: #333300;
+}
