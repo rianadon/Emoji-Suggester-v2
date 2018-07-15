@@ -11,13 +11,25 @@
     <h1>Emoji Search</h1>
     <div class="search-bar">
         <div class="search-stats search-stats-left">
-            <span class="stat stat-outer"><span class="stat-name">Over 30%</span><span class="stat-val" id="stat-g30">0</span></span>
-            <span class="stat"><span class="stat-name">Vocab len</span><span class="stat-val" id="stat-vocablen">0</span></span>
+            <span class="stat stat-outer" title="Number of emoji with a correspondence over 30%">
+                <span class="stat-name">Over 30%</span>
+                <span class="stat-val" id="stat-g30">0</span>
+            </span>
+            <span class="stat" title="Number of phrases in the relevant vocab file for the search">
+                <span class="stat-name">Vocab len</span>
+                <span class="stat-val" id="stat-vocablen">0</span>
+            </span>
         </div>
         <input type="text" class="search" placeholder="search" autofocus />
         <div class="search-stats search-stats-right">
-            <span class="stat"><span class="stat-name">Median dp</span><span class="stat-val" id="stat-meddot">0</span></span>
-            <span class="stat stat-outer"><span class="stat-name">Matches</span><span class="stat-val" id="stat-matches">0</span></span>
+            <span class="stat" title="Median dot product of emoji phrase word vectors">
+                <span class="stat-name">Median dp</span>
+                <span class="stat-val" id="stat-meddot">0</span>
+            </span>
+            <span class="stat stat-outer" title="Number of matches displayed">
+                <span class="stat-name">Matches</span>
+                <span class="stat-val" id="stat-matches">0</span>
+            </span>
         </div>
     </div>
     <script src="twemoji.min.js"></script>
