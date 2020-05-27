@@ -94,7 +94,6 @@ function parseNpy(buffer) {
         }
         if (index == -1) return ret
 
-        const start = performance.now()
         const results = []
 
         // Compute the dot products, also keeping track of the index they correspond
@@ -143,19 +142,36 @@ function parseNpy(buffer) {
     const meddotEl = document.querySelector('#stat-meddot')
     const g30El = document.querySelector('#stat-g30')
     const matchesEl = document.querySelector('#stat-matches')
+    const notification = document.querySelector('#notification')
     inp.addEventListener('input', (ev) => {
         setTimeout(() => {
             console.log(lastSearch, inp.value)
             if (lastSearch != inp.value) results.innerHTML = '<span class="searching"></span>'
-        }, 1000);
-        results.classList.toggle('blank', inp.value.length == 0);
-        const term = inp.value;
+        }, 1000)
+        results.classList.toggle('blank', inp.value.length == 0)
+        const term = inp.value
         search(term).then(updateEmoji).then(
             () => lastSearch = term,
             (err) => console.error(err)
-        );
+        )
     })
-    search('hello').then(updateEmoji)
+    let notificationTimeout
+    results.addEventListener('click', (ev) => {
+        let parent = ev.target
+        while (!parent.classList.contains('result')) {
+            parent = parent.parentNode
+        }
+        const text = parent.querySelector('img').getAttribute('alt')
+        copyText(text)
+        notification.innerHTML = `Copied&nbsp;${emojiImg(text, 36)}!`
+        notification.classList.remove('bye')
+        clearTimeout(notificationTimeout)
+        notificationTimeout = setTimeout(
+            () => notification.classList.add('bye'),
+            1000
+        )
+    })
+    search(inp.value || 'hello').then(updateEmoji)
 })()
 
 function emojiElem(emote, name, path, dotprod) {
@@ -170,4 +186,32 @@ function emojiElem(emote, name, path, dotprod) {
 
 function emojiImg(str, size) {
     return twemoji.parse(str).replace('alt', `width="${size}px" height="${size}px" alt`)
+}
+
+
+function fallbackCopyText(text) {
+    var textArea = document.createElement('textarea');
+    textArea.classList.add('copy-textarea');
+    textArea.value = text;
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+        document.execCommand('copy');
+    } catch (err) {
+        console.error('Unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+}
+function copyText(text) {
+    if (!navigator.clipboard) {
+        fallbackCopyText(text);
+        return;
+    }
+    navigator.clipboard.writeText(text).catch(err => {
+        console.error('Could not copy text', err);
+    });
 }

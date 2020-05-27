@@ -121,9 +121,10 @@ h1 {
     column-gap: 12px;
     row-gap: 2px;
     overflow: hidden;
-    margin: 0 8px;
-    padding: 4px 0;
+    padding: 4px 8px;
+    transition: background 0.2s;
 }
+.result:hover { background: #f6f6f6; }
 
 .emoji {
     font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -181,4 +182,31 @@ a {
 
 a:visited {
     color: #333300;
+}
+
+.copy-textarea {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#notification {
+    position: fixed;
+    left: calc(50% - 160px);
+    top: 130px;
+    width: 318px;
+    height: 80px;
+    background: #f0f0f0;
+    font-size: 1.7em;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, opacity 0.2s ease-out;
+    pointer-events: none;
+}
+#notification .emoji { margin: 0 0.2em;}
+#notification.bye {
+    opacity: 0;
+    transform: translateY(-10px);
 }
