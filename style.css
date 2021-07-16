@@ -135,6 +135,7 @@ h1 {
     grid-row-end: 3;
     align-self: center;
     margin-bottom: 2px;
+    cursor: pointer;
 }
 
 .emoji-name {
